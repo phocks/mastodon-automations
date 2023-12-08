@@ -1,18 +1,20 @@
-use megalodon::{entities, error, generator, SNS};
+mod instance;
+
 use std::env;
+use instance::instance;
 
 #[tokio::main]
 async fn main() {
     env_logger::init();
 
     let Ok(url) = env::var("MASTODON_URL") else {
-        println!("Specify MASTODON_URL!!");
+        println!("Specify MASTODON_URL as an environment variable.");
         return
     };
 
     match instance(url.as_str()).await {
         Ok(response) => {
-            println!("{:?}", response);
+            println!("{:#?}", response);
         }
         Err(err) => {
             println!("{:#?}", err);
@@ -20,8 +22,3 @@ async fn main() {
     }
 }
 
-async fn instance(url: &str) -> Result<entities::Instance, error::Error> {
-    let client = generator(SNS::Mastodon, url.to_string(), None, None);
-    let res = client.get_instance().await?;
-    Ok(res.json())
-}
