@@ -1,0 +1,5 @@
+base = "https://phocks.eu.org"
+client_id = "jQdgCfZhdMv58cDWrCGtfkH-nPju7JLmbLOS4AIvgLM"
+client_secret = "WILVXFdJUmgtGWY_EJot4Z9kFkmTdxYmz6hCST2GCp0"
+redirect = "urn:ietf:wg:oauth:2.0:oob"
+token = "upAPqeiO-VAuw9rqNKBSnzwwQyVugKtpB_YQRAc60Og"
