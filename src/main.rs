@@ -1,7 +1,7 @@
 mod instance;
 
+use instance::{following, instance};
 use std::env;
-use instance::instance;
 
 #[tokio::main]
 async fn main() {
@@ -9,7 +9,7 @@ async fn main() {
 
     let Ok(url) = env::var("MASTODON_URL") else {
         println!("Specify MASTODON_URL as an environment variable.");
-        return
+        return;
     };
 
     match instance(url.as_str()).await {
@@ -20,5 +20,18 @@ async fn main() {
             println!("{:#?}", err);
         }
     }
-}
 
+    let following_future = following(url.as_str(), "108274904351853384");
+    let response = following_future.await;
+
+    match response {
+        Ok(response) => {
+            for account in response {
+                println!("{:#?}", account);
+            }
+        }
+        Err(err) => {
+            println!("{:#?}", err);
+        }
+    }
+}
