@@ -51,13 +51,11 @@ async fn run() -> Result<()> {
         let unfollow = mastodon.unfollow(&i.id).await?;
         println!("{:?}", unfollow);
 
-        // Sleep for 1 second
-        sleep(1).await;
+        sleep(2).await;
     }
 
     Ok(())
 }
-
 
 async fn sleep(duration: u64) {
     tokio::time::sleep(tokio::time::Duration::from_secs(duration)).await;
