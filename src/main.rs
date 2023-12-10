@@ -52,8 +52,13 @@ async fn run() -> Result<()> {
         println!("{:?}", unfollow);
 
         // Sleep for 1 second
-        tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
+        sleep(1).await;
     }
 
     Ok(())
+}
+
+
+async fn sleep(duration: u64) {
+    tokio::time::sleep(tokio::time::Duration::from_secs(duration)).await;
 }
