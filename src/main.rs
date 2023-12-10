@@ -31,7 +31,6 @@ async fn run() -> Result<()> {
         }
     }
 
-    // Print the length of the difference
     println!("{} users in diff", diff.len());
 
     // Get those users that I follow but don't follow me
@@ -42,7 +41,6 @@ async fn run() -> Result<()> {
         }
     }
 
-    // Print the length of the difference
     println!("{} users in diff2", diff2.len());
 
     // Unfollow those users that I follow but don't follow me
